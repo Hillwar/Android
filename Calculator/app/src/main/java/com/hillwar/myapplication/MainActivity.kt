@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickOnPoint(view: android.view.View) {
-        if (!("." in number)) {
+        if (!("." in number) && number != "Infinity" && number != "NaN") {
             number += "."
         }
         result.setText(number)
