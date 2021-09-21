@@ -88,7 +88,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickOnPoint(view: android.view.View) {
-        number += "."
+        if (!("." in number)) {
+            number += "."
+        }
         result.setText(number)
     }
 
