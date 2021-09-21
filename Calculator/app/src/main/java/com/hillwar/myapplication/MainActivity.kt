@@ -9,17 +9,23 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 
-const val BUNDLE_KEY = "RESULT"
+const val NUMBER_KEY = "NUMBER"
+
+const val EQUALS_KEY = "EQUALS"
+
+const val OPERATION_KEY = "OPERATION"
+
+const val TAP_KEY = "TAP"
 
 class MainActivity : AppCompatActivity() {
-
-
 
     var number: String = "0"
 
     var equals: String = "0"
 
     var operation: String = "+"
+
+    var tapOperation: Boolean = false
 
     private lateinit var result: TextView
 
@@ -33,7 +39,11 @@ class MainActivity : AppCompatActivity() {
 
     fun clickOnButton(view: View) {
         val button: Button = view as Button
-        if (number != "0") {
+        if (tapOperation) {
+            number = "0"
+            tapOperation = false
+        }
+        if (number != "0" && number != "Infinity" && number != "NaN") {
             number += button.text.toString()
         } else {
             number = button.text.toString()
@@ -45,17 +55,24 @@ class MainActivity : AppCompatActivity() {
         number = "0"
         equals = "0"
         operation = "+"
+        tapOperation = false
         result.setText("0")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(BUNDLE_KEY, number)
+        outState.putString(NUMBER_KEY, number)
+        outState.putString(EQUALS_KEY, equals)
+        outState.putString(OPERATION_KEY, operation)
+        outState.putBoolean(TAP_KEY, tapOperation)
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        number = savedInstanceState.getString(BUNDLE_KEY, number)
+        number = savedInstanceState.getString(NUMBER_KEY, number)
+        equals = savedInstanceState.getString(EQUALS_KEY, equals)
+        operation = savedInstanceState.getString(OPERATION_KEY, operation)
+        tapOperation = savedInstanceState.getBoolean(TAP_KEY, tapOperation)
         result.setText(number)
     }
 
@@ -66,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             "x" -> equals = (equals.toDouble() * number.toDouble()).toString()
             "/" -> equals = (equals.toDouble() / number.toDouble()).toString()
         }
-        number = "0"
+        tapOperation = true
         if (equals.substring(equals.length - 2, equals.length) == ".0") equals = equals.substringBefore('.')
         result.setText(equals)
         val button: Button = view as Button
