@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="radiusOfNormal" format="float"/>
+        <attr name="angle" format="float"/>
+        <attr name="length" format="float"/>
+        <attr name="state" format="integer"/>
+    </declare-styleable>
+</resources>

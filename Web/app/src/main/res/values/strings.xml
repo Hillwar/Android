@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Web</string>
+    <string name="pictures">Pictures</string>
+    <string name="example_text">Text</string>
+</resources>
