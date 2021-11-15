@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/form"
+    app:startDestination="@id/register">
+
+    <fragment
+        android:id="@+id/register"
+        android:name="com.hillwar.havigation.fragments.Register"
+        android:label="@string/title_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_self"
+            app:destination="@id/register" />
+        <argument
+            android:name="i"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
+
+</navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@+id/titleScreen">
+
+    <fragment
+        android:id="@+id/titleScreen"
+        android:name="com.hillwar.havigation.fragments.Title"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleScreen_self"
+            app:destination="@id/titleScreen" />
+        <argument
+            android:name="i"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
+</navigation>
