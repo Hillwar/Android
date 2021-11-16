@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+    <string name="none">none</string>
+    <string name="text">text</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+</resources>
